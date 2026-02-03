@@ -240,8 +240,8 @@
 
     <footer>
         <div>making this project was the most fun I have had in some time haha!</div>
-        <div>sorryyyyy for vibe coding it though. Peace. <a href="https://www.youtube.com/watch?v=L3wKzyIN1yk" target="_blank">I am only human after all</a></div>
-        <div><a href="https://www.youtube.com/watch?v=paWE-GvDO1c" target="_blank">here's a funny cat video!</a></div>
+        <div>sorryyyyy for vibe coding it though. Peace. <a href="#" target="_blank">I am only human after all</a></div>
+        <div><a href="#" target="_blank">here's a funny cat video!</a></div>
 
         <div style="margin: 15px 0;">
             (using play.clickhouse.com api <a href="https://play.clickhouse.com/play?user=play#U0VMRUNUIG1heCh0aW1lKSBGUk9NIGhhY2tlcm5ld3NfaGlzdG9yeQ==" target="_blank">click here to view more</a>)
@@ -269,6 +269,8 @@
             if(!user) return;
 
             showLoader(true);
+            
+            // UPDATED QUERY: Uses lower() comparisons for case insensitivity
             const sql = `
                 SELECT username, total_words, global_rank, total_active_users,
                 concat(toString(global_rank), ' / ', toString(total_active_users)) AS placement,
@@ -279,7 +281,7 @@
                     count(*) OVER () AS total_active_users
                     FROM hackernews_history WHERE type = 'comment' AND deleted = 0 AND notEmpty(by)
                     GROUP BY by
-                ) WHERE username = '${user}' FORMAT JSON
+                ) WHERE lower(username) = lower('${user}') FORMAT JSON
             `;
 
             try {
@@ -333,4 +335,4 @@
         }
     </script>
 </body>
-</html>⏎
+</html>
