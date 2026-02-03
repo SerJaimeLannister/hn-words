@@ -1,0 +1,53 @@
+name: Update Daily Leaderboard
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:   # This allows you to click "Run Workflow" manually to test
+
+jobs:
+  bake-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Fetch ClickHouse Data
+        run: |
+          QUERY="SELECT by as username, sum(length(splitByWhitespace(text))) as words FROM hackernews_history WHERE type = 'comment' AND deleted = 0 AND notEmpty(by) GROUP BY by ORDER BY words DESC LIMIT 1000 FORMAT JSON"
+          RESPONSE=$(curl -s -X POST "https://play.clickhouse.com/?user=play" --data "$QUERY")
+          # Save only the 'data' part to a temporary file
+          echo "$RESPONSE" | jq -c '.data' > top1000.json
+
+      - name: Inject into HTML using Regex
+        run: |
+          python3 -c "
+          import re
+          
+          # Load the new data
+          with open('top1000.json', 'r') as f:
+              new_data = f.read()
+          
+          # Load the current HTML
+          with open('index.html', 'r') as f:
+              html = f.read()
+          
+          # This regex finds everything between the DATA_START and DATA_END comments
+          pattern = r'// DATA_START.*?// DATA_END'
+          replacement = f'// DATA_START\n        var PRELOADED_LEADERBOARD = {new_data};\n        // DATA_END'
+          
+          # Perform the replacement
+          new_html = re.sub(pattern, replacement, html, flags=re.DOTALL)
+          
+          # Save the updated HTML
+          with open('index.html', 'w') as f:
+              f.write(new_html)
+          "
+
+      - name: Commit and Push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated Data Update: Top 1000 authors"
+          file_pattern: 'index.html'
