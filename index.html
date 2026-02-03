@@ -18,7 +18,6 @@
             --shadow: 0 10px 40px rgba(0,0,0,0.4);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         body.light {
             --bg: #f6f6ef;
             --card-bg: #ffffff;
@@ -27,7 +26,6 @@
             --input-border: #e0e0e0;
             --shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
-
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg);
@@ -40,147 +38,28 @@
             transition: var(--transition);
             padding-bottom: 50px;
         }
-
-        .top-nav {
-            width: 100%;
-            max-width: 900px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .theme-toggle {
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 50%;
-            background: var(--card-bg);
-            border: 1px solid var(--input-border);
-            display: flex;
-            align-items: center;
-            transition: var(--transition);
-        }
-
-        .main-card {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 24px;
-            box-shadow: var(--shadow);
-            width: 90%;
-            max-width: 600px;
-            border: 1px solid var(--input-border);
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-
-        .main-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 6px;
-            background: var(--hn-orange);
-        }
-
+        .top-nav { width: 100%; max-width: 900px; display: flex; justify-content: space-between; align-items: center; padding: 20px; box-sizing: border-box; }
+        .theme-toggle { cursor: pointer; padding: 8px; border-radius: 50%; background: var(--card-bg); border: 1px solid var(--input-border); display: flex; align-items: center; }
+        .main-card { background: var(--card-bg); padding: 40px; border-radius: 24px; box-shadow: var(--shadow); width: 90%; max-width: 600px; border: 1px solid var(--input-border); position: relative; overflow: hidden; margin-bottom: 20px; }
+        .main-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--hn-orange); }
         h1 { font-weight: 800; font-size: 1.8rem; margin-bottom: 24px; letter-spacing: -1px; }
-
-        .search-area {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        input {
-            flex: 1;
-            background: var(--bg);
-            border: 1px solid var(--input-border);
-            padding: 14px 18px;
-            border-radius: 12px;
-            color: var(--text);
-            font-size: 16px;
-            outline: none;
-            transition: var(--transition);
-        }
-
+        .search-area { display: flex; gap: 12px; margin-bottom: 30px; }
+        input { flex: 1; background: var(--bg); border: 1px solid var(--input-border); padding: 14px 18px; border-radius: 12px; color: var(--text); font-size: 16px; outline: none; transition: var(--transition); }
         input:focus { border-color: var(--hn-orange); }
-
-        .btn {
-            background: var(--hn-orange);
-            color: white;
-            border: none;
-            padding: 0 20px;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-            white-space: nowrap;
-            height: 50px;
-        }
-
-        .btn-secondary {
-            background: var(--bg);
-            border: 1px solid var(--input-border);
-            color: var(--text);
-        }
-
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3); }
-
-        /* Stats Grid */
+        .btn { background: var(--hn-orange); color: white; border: none; padding: 0 20px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: var(--transition); height: 50px; }
+        .btn-secondary { background: var(--bg); border: 1px solid var(--input-border); color: var(--text); }
         #results { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; display: none; }
         .stat-item { background: var(--bg); padding: 20px; border-radius: 16px; border: 1px solid var(--input-border); }
         .full { grid-column: span 2; }
         .stat-label { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600; }
         .stat-value { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: var(--hn-orange); }
-
-        /* GOT Section */
-        .got-box {
-            background: linear-gradient(135deg, #2a2a2a 0%, #111 100%);
-            color: #ffd700;
-            border: 1px solid #444;
-            padding: 25px;
-            border-radius: 16px;
-            margin-top: 20px;
-            text-align: center;
-            display: none;
-        }
-        .got-title { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #aaa; margin-bottom: 10px; }
-        .got-value { font-size: 32px; font-weight: 800; font-family: serif; }
-
-        /* Leaderboard */
-        #leaderboard-section {
-            width: 90%;
-            max-width: 600px;
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 30px;
-            border: 1px solid var(--input-border);
-            display: none;
-            margin-top: 20px;
-        }
-        .lb-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--input-border);
-            font-size: 14px;
-        }
+        .got-box { background: linear-gradient(135deg, #2a2a2a 0%, #111 100%); color: #ffd700; border: 1px solid #444; padding: 25px; border-radius: 16px; margin-top: 20px; text-align: center; display: none; }
+        .got-value { font-size: 32px; font-weight: 800; }
+        #leaderboard-section { width: 90%; max-width: 600px; background: var(--card-bg); border-radius: 24px; padding: 30px; border: 1px solid var(--input-border); display: none; margin-top: 20px; }
+        .lb-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--input-border); font-size: 14px; }
         .lb-user { font-weight: 700; color: var(--hn-orange); }
-
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
-            max-width: 600px;
-            line-height: 1.8;
-        }
-
-        a { color: var(--hn-orange); text-decoration: none; font-weight: bold; }
-        a:hover { text-decoration: underline; }
-
+        footer { margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 14px; max-width: 600px; }
         .badge { display: inline-flex; align-items: center; gap: 6px; background: var(--card-bg); padding: 4px 10px; border-radius: 15px; border: 1px solid var(--input-border); font-weight: 600; margin: 5px; }
-        .ch-logo { width: 14px; height: 18px; }
-
         #loader { display: none; color: var(--hn-orange); margin: 20px; font-weight: bold; animation: pulse 1s infinite; }
         @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
     </style>
@@ -189,9 +68,7 @@
 
     <div class="top-nav">
         <div style="font-weight: 800; color: var(--hn-orange); letter-spacing: 1px;">HN_WORD_ORACLE</div>
-        <div class="theme-toggle" onclick="document.body.classList.toggle('light')">
-            🌓
-        </div>
+        <div class="theme-toggle" onclick="document.body.classList.toggle('light')">🌓</div>
     </div>
 
     <div class="main-card">
@@ -221,8 +98,8 @@
         </div>
 
         <div id="got-section" class="got-box">
-            <div class="got-title">Game of Thrones Conversion</div>
-            <div id="got-val" class="got-value">0.00 Books</div>
+            <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #aaa; margin-bottom: 10px;">Game of Thrones Conversion</div>
+            <div id="got-val" class="got-value">0.00 Volumes</div>
             <div style="font-size: 11px; margin-top: 10px; color: #888;">(1 Book = 300,000 words)</div>
         </div>
 
@@ -231,7 +108,7 @@
         </div>
     </div>
 
-    <div id="loader">QUERYING CLICKHOUSE CLUSTER...</div>
+    <div id="loader">QUERYING CLICKHOUSE...</div>
 
     <div id="leaderboard-section">
         <h3 style="margin-top: 0;">Top 1000 Prolific Writers</h3>
@@ -239,38 +116,24 @@
     </div>
 
     <footer>
-        <div>making this project was the most fun I have had in some time haha!</div>
-        <div>sorryyyyy for vibe coding it though. Peace. <a href="#" target="_blank">I am only human after all</a></div>
-        <div><a href="#" target="_blank">here's a funny cat video!</a></div>
-
-        <div style="margin: 15px 0;">
-            (using play.clickhouse.com api <a href="https://play.clickhouse.com/play?user=play#U0VMRUNUIG1heCh0aW1lKSBGUk9NIGhhY2tlcm5ld3NfaGlzdG9yeQ==" target="_blank">click here to view more</a>)
-        </div>
-
+        <div style="margin: 15px 0;">Data powered by ClickHouse</div>
         <div style="font-size: 11px; opacity: 0.6;">
-            Created with
-            <span class="badge">Gemini Flash/Pro</span>
-            using <span class="badge">AIStudio</span>
-        </div>
-        <div style="margin: 10px 0; font-size: 11px; opacity: 0.6;">
-            Powered by
-            <span class="badge">
-                <svg class="ch-logo" viewBox="0 0 9 28" fill="none"><rect width="4" height="28" fill="#FFCC01"/><rect x="5" width="4" height="28" fill="#FFCC01"/></svg>
-                ClickHouse API
-            </span>
+            Updated daily via <span class="badge">GitHub Actions</span>
         </div>
     </footer>
 
     <script>
         const CH_URL = 'https://play.clickhouse.com/?user=play&add_http_cors_header=1';
 
+        // --- DO NOT REMOVE THE COMMENTS BELOW ---
+        // DATA_START
+        var PRELOADED_LEADERBOARD = null;
+        // DATA_END
+
         async function getRank() {
             const user = document.getElementById('username').value.trim();
             if(!user) return;
-
             showLoader(true);
-            
-            // UPDATED QUERY: Uses lower() comparisons for case insensitivity
             const sql = `
                 SELECT username, total_words, global_rank, total_active_users,
                 concat(toString(global_rank), ' / ', toString(total_active_users)) AS placement,
@@ -283,7 +146,6 @@
                     GROUP BY by
                 ) WHERE lower(username) = lower('${user}') FORMAT JSON
             `;
-
             try {
                 const res = await fetch(CH_URL, { method: 'POST', body: sql });
                 const json = await res.json();
@@ -293,10 +155,7 @@
                     document.getElementById('res-rank').innerText = data.placement;
                     document.getElementById('res-words').innerText = Number(data.total_words).toLocaleString();
                     document.getElementById('res-percentile').innerText = "Top " + (100 - data.percentile).toFixed(2) + "%";
-
-                    const books = (data.total_words / 300000).toFixed(2);
-                    document.getElementById('got-val').innerText = books + " Volumes";
-
+                    document.getElementById('got-val').innerText = (data.total_words / 300000).toFixed(2) + " Volumes";
                     document.getElementById('results').style.display = 'grid';
                     document.getElementById('got-section').style.display = 'block';
                 } else { alert("User not found."); }
@@ -305,33 +164,34 @@
         }
 
         async function getTop1000() {
-            showLoader(true);
-            const sql = `
-                SELECT by, sum(length(splitByWhitespace(text))) as words
-                FROM hackernews_history
-                WHERE type = 'comment' AND deleted = 0 AND notEmpty(by)
-                GROUP BY by ORDER BY words DESC LIMIT 1000 FORMAT JSON
-            `;
-            try {
-                const res = await fetch(CH_URL, { method: 'POST', body: sql });
-                const json = await res.json();
-                let html = '';
-                json.data.forEach((row, i) => {
-                    html += `<div class="lb-row">
-                        <span>${i+1}. <span class="lb-user">${row.by}</span></span>
-                        <span>${Number(row.words).toLocaleString()} words</span>
-                    </div>`;
-                });
-                document.getElementById('lb-content').innerHTML = html;
-                document.getElementById('leaderboard-section').style.display = 'block';
-                window.scrollTo({ top: document.getElementById('leaderboard-section').offsetTop, behavior: 'smooth' });
-            } catch (e) { alert("Leaderboard Error."); }
+            let data = PRELOADED_LEADERBOARD;
+            
+            // If the GitHub action hasn't run yet, fall back to live API
+            if(!data || data.length === 0) {
+                showLoader(true);
+                const sql = `SELECT by as username, sum(length(splitByWhitespace(text))) as words FROM hackernews_history WHERE type = 'comment' AND deleted = 0 AND notEmpty(by) GROUP BY by ORDER BY words DESC LIMIT 1000 FORMAT JSON`;
+                try {
+                    const res = await fetch(CH_URL, { method: 'POST', body: sql });
+                    const json = await res.json();
+                    data = json.data;
+                } catch (e) { alert("API Error."); showLoader(false); return; }
+            }
+
+            let html = '';
+            data.forEach((row, i) => {
+                html += `<div class="lb-row">
+                    <span>${i+1}. <span class="lb-user">${row.username || row.by}</span></span>
+                    <span>${Number(row.words).toLocaleString()} words</span>
+                </div>`;
+            });
+            document.getElementById('lb-content').innerHTML = html;
+            document.getElementById('leaderboard-section').style.display = 'block';
+            window.scrollTo({ top: document.getElementById('leaderboard-section').offsetTop, behavior: 'smooth' });
             showLoader(false);
         }
 
         function showLoader(show) {
             document.getElementById('loader').style.display = show ? 'block' : 'none';
-            document.getElementById('searchBtn').disabled = show;
         }
     </script>
 </body>
